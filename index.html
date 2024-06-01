@@ -1,0 +1,317 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" type="image/x-icon" href="PicturePerfect Logo.webp">
+    <title>PicturePerfect Photobooth Rental</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            line-height: 1.6;
+            margin: 0;
+            padding: 0;
+        }
+        header, section, footer {
+            padding: 20px;
+            text-align: center;
+        }
+        header {
+            background-color: #f8f9fa;
+            border-bottom: 1px solid #e9ecef;
+        }
+        section {
+            padding: 40px 20px;
+        }
+        .packages {
+            display: flex;
+            justify-content: space-around;
+            flex-wrap: wrap;
+        }
+        .package {
+            border: 1px solid #e9ecef;
+            padding: 20px;
+            margin: 10px;
+            width: 30%;
+            box-sizing: border-box;
+            cursor: pointer;
+        }
+        .package.custom {
+            width: 100%;
+        }
+        footer {
+            background-color: #f8f9fa;
+            border-top: 1px solid #e9ecef;
+            padding: 20px;
+        }
+        a {
+            color: #007bff;
+            text-decoration: none;
+        }
+        a:hover {
+            text-decoration: underline;
+        }
+        @media (max-width: 768px) {
+            .package {
+                width: 100%;
+            }
+        }
+        .image-container {
+            text-align: center;
+            margin: 20px 0;
+        }
+        .image-container img {
+            max-width: 100%;
+            height: auto;
+        }
+        .features, .package-details, .how-it-works {
+            text-align: left;
+            margin: 0 auto;
+            max-width: 800px;
+        }
+        .feature, .package-detail, .step {
+            margin-bottom: 15px;
+        }
+        .modal {
+            display: none;
+            position: fixed;
+            z-index: 1;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            overflow: auto;
+            background-color: rgba(0, 0, 0, 0.4);
+        }
+        .modal-content {
+            background-color: #fff;
+            margin: 15% auto;
+            padding: 20px;
+            border: 1px solid #e9ecef;
+            width: 80%;
+            max-width: 500px;
+            text-align: left;
+        }
+        .close {
+            color: #aaa;
+            float: right;
+            font-size: 28px;
+            font-weight: bold;
+        }
+        .close:hover,
+        .close:focus {
+            color: black;
+            text-decoration: none;
+            cursor: pointer;
+        }
+        input, textarea {
+            width: 100%;
+            padding: 10px;
+            margin: 5px 0 20px 0;
+            box-sizing: border-box;
+        }
+        .calendar {
+            margin-top: 20px;
+        }
+        .checkbox-container {
+            display: flex;
+            align-items: center;
+        }
+        .thank-you {
+            display: none;
+            text-align: center;
+            margin-top: 20px;
+            color: green;
+        }
+    </style>
+</head>
+<body>
+
+<header>
+    <h1>Welcome to Singapore's Premier Photobooth Rental Service!</h1>
+    <p>Capture Every Moment with Our Top-Notch Photobooths</p>
+    <div class="image-container">
+        <img src="PicturePerfect Logo.webp" alt="Photobooth Event" style="max-height: 400px;">
+    </div>
+</header>
+
+<section>
+    <h2>Why Choose Us?</h2>
+    <div class="features">
+        <div class="feature"><strong>High-Quality Photos:</strong> Our photobooths are equipped with professional-grade cameras and lighting to ensure every snapshot is picture-perfect.</div>
+        <div class="feature"><strong>Customizable Options:</strong> From personalized photo templates to custom backdrops, tailor your photobooth experience to match your event’s theme.</div>
+        <div class="feature"><strong>Instant Prints:</strong> Guests can take home a keepsake with our instant print feature, ensuring they remember your event for years to come.</div>
+        <div class="feature"><strong>Digital Sharing:</strong> Share your photos instantly on social media with our integrated digital sharing options.</div>
+        <div class="feature"><strong>Fun Props and Accessories:</strong> Choose from a wide array of props and accessories to add a fun and quirky element to your photos.</div>
+    </div>
+    <div class="image-container">
+        <img src="option 1 2.webp" alt="Photobooth Props" style="max-height: 400px;">
+    </div>
+</section>
+
+<section>
+    <h2>Our Packages</h2>
+    <div class="packages">
+        <div class="package" onclick="openModal('Photo Backdrop with Virtual Backgrounds')">
+            <h3>Photo Backdrop with Virtual Backgrounds</h3>
+            <div class="package-details">
+                <div class="package-detail">Customised fabric backdrops or virtual backgrounds</div>
+                <div class="package-detail">Photographer prints pictures on the spot</div>
+            </div>
+            <div class="image-container">
+                <img src="option 1.webp" alt="Photo Backdrop">
+            </div>
+        </div>
+        <div class="package" onclick="openModal('Photobooth Kiosk')">
+            <h3>Photobooth Kiosk</h3>
+            <div class="package-details">
+                <div class="package-detail">Compact photobooth in a small kiosk</div>
+                <div class="package-detail">Instant photo prints</div>
+                <div class="package-detail">Fun props and accessories</div>
+            </div>
+            <div class="image-container">
+                <img src="option 2 2.webp" alt="Photobooth Kiosk">
+            </div>
+        </div>
+        <div class="package" onclick="openModal('360 Selfie Video Booth')">
+            <h3>360 Selfie Video Booth</h3>
+            <div class="package-details">
+                <div class="package-detail">360-degree video capturing</div>
+                <div class="package-detail">120fps high-speed video</div>
+                <div class="package-detail">Instant sharing options</div>
+            </div>
+            <div class="image-container">
+                <img src="option 3.webp" alt="360 Selfie Video Booth">
+            </div>
+        </div>
+        <div class="package custom" onclick="openModal('Custom Package')">
+            <h3>Custom Package</h3>
+            <div class="package-details">
+                <div class="package-detail">Mix and match our services</div>
+                <div class="package-detail">Tailored to your event needs</div>
+            </div>
+            <div class="image-container">
+                <img src="option 2 3.webp" alt="Custom Package" style="max-height: 400px;">
+            </div>
+        </div>
+    </div>
+</section>
+
+<section>
+    <h2>How It Works</h2>
+    <div class="how-it-works">
+        <div class="step"><strong>Book Your Date:</strong> Contact us to check availability and book your photobooth.</div>
+        <div class="step"><strong>Choose Your Package:</strong> Select the package that best suits your event needs.</div>
+        <div class="step"><strong>Customize Your Experience:</strong> Work with our team to customize your photo templates, backdrops, and props.</div>
+        <div class="step"><strong>Enjoy the Event:</strong> Our team will handle the setup and operation, ensuring a seamless experience.</div>
+        <div class="step"><strong>Relive the Memories:</strong> Receive digital copies of all photos taken and enjoy an online gallery to share with your guests.</div>
+    </div>
+    <div class="image-container">
+        <img src="option 3 1.webp" alt="Event Experience" style="max-height: 400px;">
+    </div>
+</section>
+
+<section>
+    <h2>Book Now!</h2>
+    <p>Don’t miss out on the chance to add a touch of fun and elegance to your event. Contact us today to book your photobooth rental and make your event unforgettable.</p>
+    <div class="image-container">
+        <img src="option 2.webp" alt="Book Now" style="max-height: 400px;">
+    </div>
+</section>
+
+<footer>
+    <h3>Contact Us</h3>
+    <p><strong>Phone:</strong> +65 1234 5678</p>
+    <p><strong>Email:</strong> <a href="mailto:info@singaporephotobooths.com">info@singaporephotobooths.com</a></p>
+    <p><strong>Location:</strong> 123 Photobooth Lane, Singapore 123456</p>
+    <h3>Follow Us</h3>
+    <p>Stay updated with our latest events and promotions!</p>
+    <p><a href="#">Facebook</a> | <a href="#">Instagram</a> | <a href="#">Twitter</a></p>
+    <p><strong>Singapore Photobooth Rental</strong><br>Where Every Moment is a Snapshot of Joy!</p>
+</footer>
+
+<div id="modal" class="modal">
+    <div class="modal-content">
+        <span class="close" onclick="closeModal()">&times;</span>
+        <h2 id="package-title"></h2>
+        <form id="booking-form" action="https://formspree.io/f/mbjnvgwy" method="POST">
+            <div id="custom-options" style="display: none;">
+                <div class="checkbox-container">
+                    <input type="checkbox" id="option1" name="options" value="Photo Backdrop with Virtual Backgrounds">
+                    <label for="option1"> Photo Backdrop with Virtual Backgrounds</label>
+                </div>
+                <div class="checkbox-container">
+                    <input type="checkbox" id="option2" name="options" value="Photobooth Kiosk">
+                    <label for="option2"> Photobooth Kiosk</label>
+                </div>
+                <div class="checkbox-container">
+                    <input type="checkbox" id="option3" name="options" value="360 Selfie Video Booth">
+                    <label for="option3"> 360 Selfie Video Booth</label>
+                </div>
+            </div>
+            <label for="name">Name:</label>
+            <input type="text" id="name" name="name" required>
+            
+            <label for="email">Email:</label>
+            <input type="email" id="email" name="email" required>
+            
+            <label for="phone">Phone:</label>
+            <input type="tel" id="phone" name="phone" required>
+            
+            <label for="date">Select Date:</label>
+            <input type="date" id="date" name="date" required>
+            
+            <label for="details">Event Details:</label>
+            <textarea id="details" name="details" rows="4" required></textarea>
+            
+            <button type="submit">Submit</button>
+        </form>
+        <div id="thank-you-message" class="thank-you">Thank you! We will be contacting you shortly.</div>
+    </div>
+</div>
+
+<script>
+    function openModal(packageName) {
+        document.getElementById('package-title').innerText = packageName;
+        document.getElementById('modal').style.display = "block";
+        
+        if (packageName === 'Custom Package') {
+            document.getElementById('custom-options').style.display = 'block';
+        } else {
+            document.getElementById('custom-options').style.display = 'none';
+        }
+    }
+
+    function closeModal() {
+        document.getElementById('modal').style.display = "none";
+        document.getElementById('thank-you-message').style.display = 'none';
+    }
+
+    function submitForm(event) {
+        event.preventDefault();
+        const form = document.getElementById('booking-form');
+        fetch(form.action, {
+            method: form.method,
+            body: new FormData(form),
+            headers: {
+                'Accept': 'application/json'
+            }
+        }).then(response => {
+            if (response.ok) {
+                document.getElementById('thank-you-message').style.display = 'block';
+                setTimeout(closeModal, 3000); // Close the modal after 3 seconds
+            } else {
+                console.error('Submission failed.');
+            }
+        }).catch(error => console.error('Error!', error.message));
+    }
+
+    window.onclick = function(event) {
+        if (event.target == document.getElementById('modal')) {
+            closeModal();
+        }
+    }
+</script>
+
+</body>
+</html>
